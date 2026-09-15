@@ -56,7 +56,7 @@ func addTorrent(magnet string, client *http.Client) error {
 
 	defer addResp.Body.Close()
 
-	if addResp.StatusCode != http.StatusOK {
+	if addResp.StatusCode != http.StatusOK && addResp.StatusCode != http.StatusAccepted {
 		return fmt.Errorf("Failed to add torrent %d", addResp.StatusCode)
 	}
 
